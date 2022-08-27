@@ -1,1 +1,17 @@
-console.log("oi")
+import express from "express";
+import homeRoutes from "./src/routes/homeRoutes";
+
+class App {
+	constructor(){
+		this.app = express();
+		this.middlewares();
+		this.routes();
+	}
+
+	middlewares(){
+		this.app.use(express.urlencoded({ extended: true }));
+		this.app.use(express.json());
+	}
+
+}
+export default new App().app;
