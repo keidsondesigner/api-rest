@@ -13,5 +13,9 @@ class App {
 		this.app.use(express.json());
 	}
 
+	routes(){
+		this.app.use('/', homeRoutes)
+	}
+
 }
 export default new App().app;
