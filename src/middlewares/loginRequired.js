@@ -2,9 +2,9 @@
 import jwt from 'jsonwebtoken';
 
 export default (req, res, next) => {
-	const { autorization } = req.headers;
+	const { authorization } = req.headers;
 
-    if(!autorization){
+    if(!authorization){
         return res.status(401).json({
             errors: ['Login required']
         });
@@ -12,7 +12,7 @@ export default (req, res, next) => {
 
     // separando o 'texto Bearer' do 'token'.
     // Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ny
-    const [, token] = autorization.split(' ');
+    const [, token] = authorization.split(' ');
 
     try {
         const dados = jwt.verify(token, process.env.TOKEN_SECRET);
