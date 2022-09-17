@@ -1,6 +1,6 @@
 import app from "./app";
 
-const port = 3000;
+const port = 5000;
 app.listen(port, () => {
-	console.log("Server exucutando na porta 3000")
+	console.log("Server exucutando na porta http://localhost:5000")
 })
