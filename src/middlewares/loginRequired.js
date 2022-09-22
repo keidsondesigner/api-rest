@@ -17,6 +17,7 @@ export default (req, res, next) => {
     try {
         const dados = jwt.verify(token, process.env.TOKEN_SECRET);
 
+		//Payload do 'id' e 'email'
         const { id, email } = dados;
         req.userId = id;
         req.userEmail = email;
