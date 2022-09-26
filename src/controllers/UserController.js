@@ -39,13 +39,7 @@ class UserController {
 	//Update - primeiro verifico se o user existe, para depois atualizar;
 	async update(req, res){
 		try {
-			if(!req.params.id){
-				return res.status(400).json({
-					errors: ['ID não encontrado.'],
-				});
-			}
-
-			const user = await User.findByPk(req.params.id);
+			const user = await User.findByPk(req.userId);
 
 			if(!user){
 				return res.status(400).json({
