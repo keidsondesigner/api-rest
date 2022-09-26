@@ -28,7 +28,9 @@ class UserController {
 	async show(req, res){
 		try {
 			const user = await User.findByPk(req.params.id);
-			return res.json(user);
+
+			const { id, nome, email} = user;
+			return res.json({ id, nome, email});
 		} catch (e) {
 			return res.json(null);
 		}
