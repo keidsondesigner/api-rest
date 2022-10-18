@@ -10,7 +10,6 @@ class TokenController {
 		
 		// Validando email e senha, os campos não podem ser vázio.
 		if(email === '' || password === '') {
-			console.log({email, password});
 			return res.status(401).json({
 				errors: ['Credenciais inválidas'],
 			});

@@ -5,7 +5,9 @@ class UserController {
 	async store(req, res) {
 		try {
 			const novoUser = await User.create(req.body);
-			return res.json(novoUser);
+
+			const {id, nome, email} = novoUser;
+			return res.json({id, nome, email});
 		} catch (e) {
 			return res.status(400).json({
 				errors: e.errors.map(err => err.message),
@@ -47,9 +49,10 @@ class UserController {
 				});
 			}
 
-			const dadosAtualizados = await user.update(req.body);
+			const novosDados = await user.update(req.body);
 
-			return res.json(dadosAtualizados);
+			const { id, nome, email } = novosDados;
+			return res.json({ id, nome, email });
 		} catch (e) {
 			return res.status(400).json({
 				errors: e.errors.map(err => err.message),
@@ -60,13 +63,7 @@ class UserController {
 	//Delete - primeiro verifico se o user existe, para depois deletar;
 	async delete(req, res){
 		try {
-			if(!req.params.id){
-				return res.status(400).json({
-					errors: ['ID não encontrado.'],
-				});
-			}
-
-			const user = await User.findByPk(req.params.id);
+			const user = await User.findByPk(req.userId);
 
 			if(!user){
 				return res.status(400).json({
@@ -75,7 +72,7 @@ class UserController {
 			}
 
 			await user.destroy();
-			return res.json(user);
+			return res.json(null);
 			
 		} catch (e) {
 			return res.status(400).json({
