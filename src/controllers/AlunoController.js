@@ -10,13 +10,13 @@ class AlunoController {
 	async store(req, res) {
 		try {
 			// Creando um aluno;
-			const aluno = Aluno.create(req.body);
+			const aluno = await Aluno.create(req.body);
 
 			return res.json(aluno);
 
 		} catch (e) {
 			return res.status(400).json({
-				errors: e.error.map(err => err.message),
+				errors: e.errors.map(err => err.message),
 			});
 		}
 	};
@@ -43,7 +43,7 @@ class AlunoController {
 
 		} catch (e) {
 			return res.status(400).json({
-				errors: e.error.map(err => err.message),
+				errors: e.errors.map(err => err.message),
 			});
 		}
 	};
@@ -73,7 +73,7 @@ class AlunoController {
 
 		} catch (e) {
 			return res.status(400).json({
-				errors: e.error.map(err => err.message),
+				errors: e.errors.map(err => err.message),
 			});
 		}
 	};
@@ -96,12 +96,12 @@ class AlunoController {
 				});
 			}
 			// tendo certerza que o aluno existe, vamos ATUALIZAR o aluno
-			const alunoAtualizado  = aluno.update(req.body);
+			const alunoAtualizado  = await aluno.update(req.body);
 			return res.json(alunoAtualizado);
 
 		} catch (e) {
 			return res.status(400).json({
-				errors: e.error.map(err => err.message),
+				errors: e.errors.map(err => err.message),
 			});
 		}
 	};

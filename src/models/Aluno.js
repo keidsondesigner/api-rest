@@ -26,6 +26,9 @@ export default class Aluno extends Model {
 			email: {
 				type: Sequelize.STRING,
 				defaultValue: '',
+				unique: {
+					msg: 'Email já existe.',
+				},
 				validate: {
 					isEmail: {
 						msg: 'Email inválido.',
@@ -36,7 +39,7 @@ export default class Aluno extends Model {
 				type: Sequelize.INTEGER,
 				defaultValue: '',
 				validate: {
-					isIn: {
+					isInt: {
 						msg: 'Idade precisa ser um número inteiro.',
 					},
 				},
