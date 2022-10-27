@@ -11,7 +11,7 @@ export default async (req, res, next) => {
     };
 
     // separando o 'texto Bearer' do 'token'.
-    // Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ny
+    // Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ny
     const [, token] = authorization.split(' ');
 
     try {
