@@ -2,9 +2,9 @@
 	"name": "apirestnode",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "server.js",
 	"engine": {
-		"node": "16.13.2"
+		"node": "16.x"
 	},
 	"scripts": {
 		"start": "node server.js",
